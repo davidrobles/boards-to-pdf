@@ -2,7 +2,7 @@
 
 class OthelloPDF
 
-  LETTERS = %w(a b c d e f g h)
+  LETTERS = %w(A B C D E F G H)
   
   # options
   BLACK   = 'B'
@@ -117,21 +117,21 @@ class OthelloPDF
 
   def draw_letters
     LETTERS.each_with_index do |letter, i|
-      ps '/Helvetica findfont\n'
-      ps '10 scalefont\n'
-      ps 'setfont\n'
-      ps 'newpath\n'
-      ps '%d %d moveto\n' % [i * CELL_SIZE + OFFSET + (CELLS_SIDE - 1), CELLS_SIDE * CELL_SIZE + OFFSET + 4]
-      ps '(%s) show\n' % LETTERS[i]
+      ps '/Helvetica findfont'
+      ps '10 scalefont'
+      ps 'setfont'
+      ps 'newpath'
+      ps '%d %d moveto' % [i * CELL_SIZE + OFFSET + (CELLS_SIDE - 1), CELLS_SIDE * CELL_SIZE + OFFSET + 4]
+      ps '(%s) show' % LETTERS[i]
     end
 
     CELLS_SIDE.times do |i|
-      ps '/Helvetica findfont\n'
-      ps '10 scalefont\n'
-      ps 'setfont\n'
-      ps 'newpath\n'
-      ps '%d %d moveto\n' % [0, i * CELL_SIZE + OFFSET + (CELLS_SIDE - 1)]
-      ps '(%s) show\n' % [(CELLS_SIDE - i).to_s]
+      ps '/Helvetica findfont'
+      ps '10 scalefont'
+      ps 'setfont'
+      ps 'newpath'
+      ps '%d %d moveto' % [0, i * CELL_SIZE + OFFSET + (CELLS_SIDE - 1)]
+      ps '(%s) show' % [(CELLS_SIDE - i).to_s]
     end
   end
 
@@ -196,8 +196,8 @@ boards = filestr.split("\n\n")
 # require 'pp'
 
 boards.each_with_index do |board, i|
+  puts 'hello'
   rows = board.split("\n")
   matrix = rows.map { |row| row.split('') }
   OthelloPDF.new(matrix, "board-#{i}")
 end
-
